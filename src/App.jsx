@@ -125,10 +125,47 @@ function App() {
       label: "2034",
     },
   ];
-  
+
   return (
     <div>
+      <h1>Payment Information</h1>
 
+      <div className="card-details">
+        <span>
+          <label htmlFor="name">Name</label>
+          <input required type="text" id="name" />
+        </span>
+        <span>
+          <label htmlFor="surname">Surname</label>
+          <input required type="text" id="surname" />
+        </span>
+        <span>
+          <label htmlFor="card-number">Card Number</label>
+          <input required type="text" maxLength={16} id="card-number" />
+        </span>
+        <div className="dateArea">
+          <span>
+            <label htmlFor="month">Month</label>
+            <select id="month">
+              {month.map((item)=>(
+                <option key={item.id} value={item.value}>{item.label}</option>
+              ))}
+            </select>
+          </span>
+          <span>
+            <label htmlFor="year">Year</label>
+            <select id="year">
+              {year.map((item)=>(
+                <option key={item.id} value={item.value}>{item.label}</option>
+              ))}
+            </select>
+          </span>
+        </div>
+        <span>
+          <label htmlFor="cvv">CVV</label>
+          <input required type="text" maxLength={3} id="cvv" />
+        </span>
+      </div>
     </div>
   );
 }
