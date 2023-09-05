@@ -32,7 +32,7 @@ This command will launch the project on a local server and display it in your br
 
 ## Screenshots
 
-<img src='https://github.com/EnesArslan8/credit-card-form/assets/89355402/357236d9-7863-42f5-9509-9f35dd590c6a' width='auto' height='500px' />
+<img src='https://github.com/EnesArslan8/credit-card-form/assets/89355402/c4c1d88a-73a0-4869-aa27-39c6819c640f' width='auto' height='500px' />
 
 ## Contribution
 
