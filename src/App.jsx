@@ -4,6 +4,7 @@ function App() {
   const [isSubmit, setIsSubmit] = useState(false);
   const [time, setTime] = useState("");
   const [name, setName] = useState("");
+  const [cvv, setCVV] = useState("");
   const [surname, setSurname] = useState("");
   const [cardNumber, setCardNumber] = useState("#### #### #### ####");
   const [isFlipped, setIsFlipped] = useState(false);
@@ -13,7 +14,29 @@ function App() {
   };
 
   const handleSubmit = (e) => {
+    const nameInput=document.querySelector('#name');
+    nameInput.value="";
+    const surnameInput=document.querySelector('#surname');
+    surnameInput.value="";
+    const cardnumberInput=document.querySelector('#card-number');
+    cardnumberInput.value="";
+    const cardMonth=document.querySelector('#card-month');
+    cardMonth.value="";
+    const cvvInput=document.querySelector('#cvv');
+    cvvInput.value="";
     e.preventDefault();
+    setTime("");
+    setName("");
+    setCVV("");
+    setSurname("");
+    setCardNumber("#### #### #### ####");
+    isFlipped(false)
+  };
+
+  const handleCVV = (e) => {
+    const cardCvv = document.querySelector("#cvv");
+    cardCvv.value = cardCvv.value.replace(/[^0-9/]/g, "");
+    setCVV(e.target.value);
   };
   const handleCardNumber = (e) => {
     const cardNumberInput = document.querySelector("#card-number");
@@ -74,22 +97,15 @@ function App() {
             </div>
           </div>
           <div className="back">
-            <div className="backHeader">
-              <p>Garanti</p>
-              <h4>
-                paracard <span>bonus</span>
-              </h4>
-            </div>
+            <div className="backHeader"></div>
             <div className="backBody">
               <p>
-                {cardNumber
-                  ? cardNumber.toString().replace(/\d{4}(?=.)/g, "$& ")
-                  : "#### #### #### ####"}
+                <span>
+                  {cvv ? cvv.toString().replace(/\d{4}(?=.)/g, "$& ") : "###"}
+                </span>
               </p>
-              <div>
-                <p>{time ? <p> {time}</p> : "##/##"}</p>
-              </div>
             </div>
+            <img className="backImg" src="https://www.garantibbva.com.tr/content/experience-fragments/public-website/tr/site/header/master/_jcr_content/root/header/headerdesktop/image.coreimg.svg/1664356028506/logo.svg"/>
           </div>
         </div>
       </div>
@@ -137,7 +153,13 @@ function App() {
           </div>
           <span onClick={flipCard} className="card-content">
             <label htmlFor="cvv">CVV</label>
-            <input required type="text" maxLength={3} id="cvv" />
+            <input
+              onChange={handleCVV}
+              required
+              type="text"
+              maxLength={3}
+              id="cvv"
+            />
           </span>
           <button type="submit" className="submitBtn" onClick={handleSubmit}>
             Gönder
